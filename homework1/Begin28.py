@@ -1,0 +1,11 @@
+a = int (input("enter value a: "))
+a2 = a**2
+a3 = a**3
+a5 = a2*a3
+a10 = a5**2
+a15 = a10 * a5
+print ("a2 = ", a2)
+print ("a3 = ", a3)
+print ("a5 = ", a5)
+print ("a10 = ", a10)
+print ("a15 = ", a15)

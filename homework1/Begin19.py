@@ -1,0 +1,10 @@
+x1 = float (input ("enter first x coordinate: "))
+y1 = float (input ("enter first y coordinate: "))
+x2 = float (input ("enter second x coordinate: "))
+y2 = float (input ("enter second y coordinate: "))
+deltax = abs (x1-x2)
+deltay = abs (y1-y2)
+P = 2 * (deltax+deltay)
+A = deltay * deltax
+print("perimeter is: ", P)
+print("area is: ", A)
