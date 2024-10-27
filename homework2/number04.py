@@ -1,0 +1,5 @@
+a = float (input("enter a: "))
+b = float (input("enter b: "))
+d, r = divmod (a, b)
+print (f"{a}/{b} is: ", int(d))
+print (f"remainder {a}/{b} is: ", r)

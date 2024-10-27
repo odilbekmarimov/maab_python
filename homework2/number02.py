@@ -1,0 +1,5 @@
+a = int (input("a = "))
+b = int (input("b = "))
+c = int (input("c = "))
+print("max is: ", max(a, b, c))
+print("min is: ", min(a, b, c))
