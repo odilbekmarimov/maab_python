@@ -1,2 +1,2 @@
 a = input("enter the string: ")
-print("Title: " + a)
+print("Title: {}".format(a))
