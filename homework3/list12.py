@@ -1,0 +1,6 @@
+*list1,=map(int,input("enter the list (separator 'space'): ").split())
+new_item = int(input("enter new item: "))
+index1 = int(input("enter index: "))
+print(list1)
+list1.insert(index1, new_item)
+print("new", list1)
