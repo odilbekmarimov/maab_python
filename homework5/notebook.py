@@ -1,10 +1,12 @@
 from tabulate import tabulate
 
 notes = []
+
 def shorten_text(text, length=10):
-    return text if len(text) <= length else text[:length-3] + "..." + text[len(text)-5]
+    return text if len(text) <= length else text[:length-3] + "..." + text[len(text)-5:]
 
 def show_menu():
+
     print("--------------------------")
     print("CHOOSE OPTION")
     print("1: SHOW ALL NOTES")
@@ -16,16 +18,16 @@ def show_menu():
     print("M: SHOW MENU AGAIN")
     print("--------------------------")
     
-
-def show_all_notes():
+def show_all_notes(notes):
+   
     if notes:
         table = [[note["id"], shorten_text(note["text"])] for note in notes]
         print(tabulate(table, headers=["id", "text"], tablefmt="grid"))
     else:
         print("No notes found")
 
-def show_note_details():
-    note_id = int(input("Enter note ID: "))
+def show_note_details(notes, note_id):
+    
     note = next((note for note in notes if note["id"] == note_id), None)
     if note:
         print(f"ID: {note['id']}")
@@ -33,44 +35,44 @@ def show_note_details():
     else:
         print("Note not found")
 
-def create_note():
-    text = input("Enter note text: ")
+def create_note(notes, text):
     new_id = max([note["id"] for note in notes], default=0) + 1
     notes.append({"id": new_id, "text": text})
     print("Note added")
 
-
-def update_note():
-    note_id = int(input("Enter note ID to update: "))
+def update_note(notes, note_id, new_text):
+    
     note = next((note for note in notes if note["id"] == note_id), None)
     if note:
-        new_text = input("Enter new text: ")
         note["text"] = new_text
         print("Note updated")
     else:
         print("Note not found")
 
-def delete_note():
-    note_id = int(input("Enter note ID to delete: "))
-    global notes
-    notes = [note for note in notes if note["id"] != note_id]
+def delete_note(notes, note_id):
+    notes[:] = [note for note in notes if note["id"] != note_id]
     print("Note deleted")
 
-
 def main():
+
     show_menu()
     while True:
         choice = input("Choice: ").strip().upper()
         if choice == "1":
-            show_all_notes()
+            show_all_notes(notes)
         elif choice == "2":
-            show_note_details()
+            note_id = int(input("Enter note ID: "))
+            show_note_details(notes, note_id)
         elif choice == "3":
-            create_note()
+            text = input("Enter note text: ")
+            create_note(notes, text)
         elif choice == "4":
-            update_note()
+            note_id = int(input("Enter note ID to update: "))
+            new_text = input("Enter new text: ")
+            update_note(notes, note_id, new_text)
         elif choice == "5":
-            delete_note()
+            note_id = int(input("Enter note ID to delete: "))
+            delete_note(notes, note_id)
         elif choice == "Q":
             print("QUIT!")
             break
@@ -78,5 +80,3 @@ def main():
             show_menu()
         else:
             print("Invalid, try again")
-
-main()
