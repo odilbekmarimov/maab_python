@@ -104,15 +104,6 @@ def delete_note (notes):
     except ValueError:
         print("Invalid ID. Please enter a numeric value.")
         
-        
-
-
-def save_notes(notes, next_id=None):
-    data = {"notes": notes, "next_id": next_id} if next_id is not None else {"notes": notes}
-    with open("notes.json", "w") as file:
-        json.dump(data, file, indent=4)
-        
-        
 def load_notes():
     try:
         with open("notes.json", "r") as file:
