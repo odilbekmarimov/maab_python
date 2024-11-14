@@ -3,7 +3,7 @@ import pandas as pd
 from openpyxl import load_workbook
 
 with sqlite3.connect('population.db') as con:
-    df = pd.read_sql("SELECT * FROM population", con = con)
+    df = pd.read_sql("select * from population", con = con)
 
 uniqueStates = df.groupby('state')
 StatePopulation = uniqueStates.size()
