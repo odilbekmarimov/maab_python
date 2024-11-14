@@ -33,7 +33,8 @@ try:
             analysis_df.to_excel(writer, sheet_name="State", index=False, startrow=1, header=False)
             
 except FileNotFoundError:
+    headers = ["State", "Percentage", "Average Salary", "Median Salary", "Number of population"]
     with pd.ExcelWriter(file_path, engine="openpyxl") as writer:
-        analysis_df.to_excel(writer, sheet_name="State", index=False, startrow=1, header=False)
+        analysis_df.to_excel(writer, sheet_name="State", index=False, startrow=1, header=headers)
 
 print(f"Data exported to '{file_path}'")
